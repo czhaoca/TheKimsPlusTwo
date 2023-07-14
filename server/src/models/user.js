@@ -1,4 +1,5 @@
 import * as data from '../data/data.js';
+import User from '../schemas/users.js';
 
 const { users } = data;
 
@@ -6,18 +7,22 @@ const getUserInfo = async emailAddress => {
   //
 };
 
+const signup = async userInfo => {
+  const newUser = User.create(userInfo);
+  return newUser;
+};
+
 const login = async emailAddress => {
   //
 };
 
-const findByEmail = async email => {
-  // for (let i = 0; i < users.length; i += 1) {
-  //   if (users[i].email === email) {
-  //     return users[i];
-  //   }
-  // }
-  // return null;
-  return users.find(user => user.email === email);
+const logout = async () => {
+  //
 };
 
-export { getUserInfo, login, findByEmail };
+const findByEmail = async email => {
+  // return users.find(user => user.email === email);
+  return User.findOne({ email });
+};
+
+export { getUserInfo, login, logout, findByEmail };

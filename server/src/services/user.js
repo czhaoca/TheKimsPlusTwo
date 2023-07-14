@@ -63,7 +63,7 @@ const getUserInfoByEmail = async email => {
 };
 
 const signup = async userInfo => {
-  //
+  return userModel.signup(userInfo);
 };
 
 const login = async userInfo => {
@@ -74,6 +74,10 @@ const login = async userInfo => {
   return true;
 };
 
+const logout = async () => {
+  await userModel.logout();
+};
+
 const terminateToken = async () => {
   //
 };
@@ -82,4 +86,4 @@ const findByEmailAndUpdate = async (email, updatedInfo) => {
   return userModel.updateItem(email, updatedInfo);
 };
 
-export { getUserInfoByEmail, signup, login, findByEmailAndUpdate };
+export { getUserInfoByEmail, signup, login, logout, findByEmailAndUpdate };
